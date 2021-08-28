@@ -33,7 +33,7 @@
 #include "LinuxUart.hpp"
 
 #include "hal/Error.hpp"
-#include "hal/utils/logger.hpp"
+#include "hal/linux/logger.hpp"
 
 #include <fcntl.h>
 #include <unistd.h>
