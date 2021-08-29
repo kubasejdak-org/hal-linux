@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.19)
 
 # Define application settings.
 set(PLATFORM linux)
-set(APP hal-linux-demo)
 
 include(cmake/conan.cmake)
 include(cmake/doxygen.cmake)
