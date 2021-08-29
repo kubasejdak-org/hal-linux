@@ -8,3 +8,10 @@ add_subdirectory(i2c)
 add_subdirectory(logger)
 add_subdirectory(spi)
 add_subdirectory(uart)
+
+add_library(hal-linux INTERFACE)
+add_library(hal::linux ALIAS hal-linux)
+
+target_link_libraries(hal-linux
+    INTERFACE hal::gpio hal::i2c hal::spi hal::uart
+)

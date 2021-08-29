@@ -47,18 +47,6 @@ REGISTER_LOGGER(LinuxGpioLogger, "LinuxGpio", cDefaultLogLevel);
 
 } // namespace gpio
 
-namespace i2c {
-
-REGISTER_LOGGER(I2cLogger, "I2C", cDefaultLogLevel);
-
-} // namespace i2c
-
-namespace spi {
-
-REGISTER_LOGGER(SpiLogger, "SPI", cDefaultLogLevel);
-
-} // namespace spi
-
 namespace uart {
 
 REGISTER_LOGGER(LinuxUartLogger, "LinuxUart", cDefaultLogLevel);
