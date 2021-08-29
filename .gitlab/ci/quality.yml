@@ -1,0 +1,35 @@
+Clang_Format:
+  stage: quality
+  image: kubasejdak/clang:12
+  tags:
+    - linux
+  needs: []
+  script:
+    - tools/check-clang-format.sh lib
+    - git diff --color > clang-format.patch
+    - |
+      if [[ `wc -l < clang-format.patch` != "0" ]]; then
+        cat clang-format.patch
+        git checkout -- .
+        exit 1
+      fi
+
+Clang_Tidy:
+  stage: quality
+  image: kubasejdak/clang:12
+  tags:
+    - linux
+  needs: []
+  artifacts:
+    name: "${CI_JOB_NAME}_${CI_JOB_ID}"
+    expire_in: 2 weeks
+    paths:
+      - ${CI_JOB_NAME}/errors.yml
+      - ${CI_JOB_NAME}/compile_commands.json
+  script:
+    - mkdir ${CI_JOB_NAME}
+    - cd ${CI_JOB_NAME}
+
+    # Check build.
+    - cmake .. -DTOOLCHAIN=clang-12
+    - ../tools/check-clang-tidy.sh
