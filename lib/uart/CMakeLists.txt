@@ -8,6 +8,6 @@ target_include_directories(hal-uart
 )
 
 target_link_libraries(hal-uart
-    PUBLIC hal-public osal::cpp
+    PUBLIC hal::interfaces osal::cpp
     PRIVATE hal::linux-logger
 )
