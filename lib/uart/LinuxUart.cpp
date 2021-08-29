@@ -30,10 +30,10 @@
 ///
 /////////////////////////////////////////////////////////////////////////////////////
 
-#include "LinuxUart.hpp"
+#include "hal/uart/LinuxUart.hpp"
 
 #include "hal/Error.hpp"
-#include "hal/linux/logger.hpp"
+#include "hal/logger/linux.hpp"
 
 #include <fcntl.h>
 #include <unistd.h>

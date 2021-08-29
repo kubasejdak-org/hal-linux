@@ -6,6 +6,7 @@ set(APP hal-linux-demo)
 
 include(cmake/conan.cmake)
 include(cmake/doxygen.cmake)
+include(cmake/hal-interfaces.cmake)
 include(cmake/osal.cmake)
 include(cmake/platform.cmake)
 include(cmake/utils.cmake)
@@ -22,6 +23,7 @@ conan_init()
 add_compile_options(-Wall -Wextra -Wpedantic -Werror $<$<COMPILE_LANGUAGE:CXX>:-std=c++17>)
 
 add_subdirectory(${platform_SOURCE_DIR}/app ${platform_BINARY_DIR})
+add_subdirectory(${hal-interfaces_SOURCE_DIR}/lib ${hal-interfaces_BINARY_DIR})
 add_subdirectory(${osal_SOURCE_DIR}/lib ${osal_BINARY_DIR})
 add_subdirectory(${utils_SOURCE_DIR}/lib ${utils_BINARY_DIR})
 
