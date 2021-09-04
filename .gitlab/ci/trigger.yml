@@ -1,0 +1,5 @@
+hal-trigger:
+  stage: trigger
+  trigger: kubasejdak-libs/hal
+  variables:
+    TRIGGER_SOURCE_BRANCH: ${$CI_COMMIT_REF_NAME}
