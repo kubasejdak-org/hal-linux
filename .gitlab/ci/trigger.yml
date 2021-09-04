@@ -5,4 +5,5 @@ hal-trigger:
     branch: maintenance/add-support-for-triggered-ci
     strategy: depend
   variables:
+    TRIGGER_SOURCE_PROJECT: ${CI_PROJECT_PATH}
     TRIGGER_SOURCE_BRANCH: ${CI_COMMIT_REF_NAME}
