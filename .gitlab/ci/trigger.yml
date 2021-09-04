@@ -1,7 +1,7 @@
 hal-trigger:
   stage: trigger
   trigger:
-    project: kubasejdak-libs/hal
+    project: embeddedlinux/libs/hal
     branch: maintenance/add-support-for-triggered-ci
     strategy: depend
   variables:
