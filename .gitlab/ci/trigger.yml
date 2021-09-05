@@ -1,4 +1,4 @@
-hal-trigger:
+hal-master:
   stage: trigger
   trigger:
     project: embeddedlinux/libs/hal
