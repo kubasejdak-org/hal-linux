@@ -5,9 +5,11 @@ stages:
   - build-GCC
   - build-Clang
   - quality
+  - trigger
   - deploy
 
 include:
   - "/.gitlab/ci/build.yml"
   - "/.gitlab/ci/deploy.yml"
   - "/.gitlab/ci/quality.yml"
+  - "/.gitlab/ci/trigger.yml"
