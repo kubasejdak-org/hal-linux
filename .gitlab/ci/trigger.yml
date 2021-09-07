@@ -1,0 +1,9 @@
+hal-master:
+  stage: trigger
+  trigger:
+    project: embeddedlinux/libs/hal
+    branch: master
+    strategy: depend
+  variables:
+    TRIGGER_SOURCE_PROJECT: ${CI_PROJECT_PATH}
+    TRIGGER_SOURCE_COMMIT: ${CI_COMMIT_SHA}
