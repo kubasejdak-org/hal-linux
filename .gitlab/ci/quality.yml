@@ -1,6 +1,6 @@
 Clang_Format:
   stage: quality
-  image: kubasejdak/clang:12
+  image: ${DOCKER_IMAGE_CLANG}
   tags:
     - cet_build
   needs: []
@@ -16,7 +16,7 @@ Clang_Format:
 
 Clang_Tidy:
   stage: quality
-  image: kubasejdak/clang:12
+  image: ${DOCKER_IMAGE_CLANG}
   tags:
     - cet_build
   needs: []
@@ -31,5 +31,5 @@ Clang_Tidy:
     - cd ${CI_JOB_NAME}
 
     # Check build.
-    - cmake .. -DTOOLCHAIN=clang-12
+    - cmake .. -DTOOLCHAIN=clang
     - ../tools/check-clang-tidy.sh
