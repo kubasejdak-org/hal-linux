@@ -2,7 +2,7 @@ pages:
   stage: deploy
   only:
     - master
-  image: kubasejdak/gcc:latest
+  image: ${DOCKER_IMAGE_GCC}
   tags:
     - cet_build
   needs: []
