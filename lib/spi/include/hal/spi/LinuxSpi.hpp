@@ -40,13 +40,12 @@
 
 namespace hal::spi {
 
-// clang-format off
 /// Represents the possible SPI significant bits mode.
-enum class SignificantBits {
+enum class SignificantBits
+{
     eMsb = 0,
     eLsb = 1
 };
-// clang-format on
 
 /// Represents Linux driver for the II2c interface.
 class LinuxSpi : public ISpi {
