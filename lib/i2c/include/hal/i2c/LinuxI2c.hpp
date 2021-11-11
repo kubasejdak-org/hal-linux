@@ -33,6 +33,7 @@
 #include "hal/i2c/II2c.hpp"
 
 #include <osal/Timeout.hpp>
+#include <utils/types/Result.hpp>
 
 #include <string>
 #include <system_error>
@@ -62,11 +63,8 @@ private:
                              osal::Timeout timeout) override;
 
     /// @see II2c::drvRead().
-    std::error_code drvRead(std::uint16_t address,
-                            std::uint8_t* bytes,
-                            std::size_t size,
-                            osal::Timeout timeout,
-                            std::size_t& actualReadSize) override;
+    Result<std::size_t>
+    drvRead(std::uint16_t address, std::uint8_t* bytes, std::size_t size, osal::Timeout timeout) override;
 
     /// Sets slave address.
     /// @param address          Address to be set.

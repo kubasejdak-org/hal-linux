@@ -33,6 +33,7 @@
 #include "hal/spi/ISpi.hpp"
 
 #include <osal/Timeout.hpp>
+#include <utils/types/Result.hpp>
 
 #include <cstdint>
 #include <string>
@@ -68,15 +69,11 @@ private:
     std::error_code drvWrite(const std::uint8_t* bytes, std::size_t size, osal::Timeout timeout) override;
 
     /// @see ISpi::drvRead().
-    std::error_code
-    drvRead(std::uint8_t* bytes, std::size_t size, osal::Timeout timeout, std::size_t& actualReadSize) override;
+    Result<std::size_t> drvRead(std::uint8_t* bytes, std::size_t size, osal::Timeout timeout) override;
 
     /// @see ISpi::drvTransfer().
-    std::error_code drvTransfer(const std::uint8_t* txBytes,
-                                std::uint8_t* rxBytes,
-                                std::size_t size,
-                                osal::Timeout timeout,
-                                std::size_t& actualReadSize) override;
+    Result<std::size_t>
+    drvTransfer(const std::uint8_t* txBytes, std::uint8_t* rxBytes, std::size_t size, osal::Timeout timeout) override;
 
     /// Sets frequency of the SPI bus.
     /// @param frequencyHz          Frequency to be set in Hz.

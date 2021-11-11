@@ -34,6 +34,8 @@
 
 #include "hal/gpio/IGpioPort.hpp"
 
+#include <utils/types/Result.hpp>
+
 #include <climits>
 #include <cstdint>
 #include <map>
@@ -83,7 +85,7 @@ public:
     LinuxGpio& operator=(LinuxGpio&&) = delete;
 
     /// @see IGpioPort::get().
-    std::error_code get(std::uint32_t& value, std::uint32_t mask) override;
+    Result<std::uint32_t> get(std::uint32_t mask) override;
 
     /// @see IGpioPort::set().
     std::error_code set(std::uint32_t value, std::uint32_t mask) override;
