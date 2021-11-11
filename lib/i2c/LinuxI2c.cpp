@@ -94,10 +94,8 @@ std::error_code LinuxI2c::drvWrite(std::uint16_t address,
     return Error::eOk;
 }
 
-Result<std::size_t> LinuxI2c::drvRead(std::uint16_t address,
-                                  std::uint8_t* bytes,
-                                  std::size_t size,
-                                  osal::Timeout /*unused*/)
+Result<std::size_t>
+LinuxI2c::drvRead(std::uint16_t address, std::uint8_t* bytes, std::size_t size, osal::Timeout /*unused*/)
 {
     if (!m_writeData.empty()) {
         std::vector<i2c_msg> msgs;
