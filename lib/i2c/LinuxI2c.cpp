@@ -94,11 +94,10 @@ std::error_code LinuxI2c::drvWrite(std::uint16_t address,
     return Error::eOk;
 }
 
-std::error_code LinuxI2c::drvRead(std::uint16_t address,
+Result<std::size_t> LinuxI2c::drvRead(std::uint16_t address,
                                   std::uint8_t* bytes,
                                   std::size_t size,
-                                  osal::Timeout /*unused*/,
-                                  std::size_t& actualReadSize)
+                                  osal::Timeout /*unused*/)
 {
     if (!m_writeData.empty()) {
         std::vector<i2c_msg> msgs;
@@ -134,8 +133,7 @@ std::error_code LinuxI2c::drvRead(std::uint16_t address,
             return Error::eHardwareError;
     }
 
-    actualReadSize = size;
-    return Error::eOk;
+    return size;
 }
 
 } // namespace hal::i2c
