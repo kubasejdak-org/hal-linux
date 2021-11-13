@@ -99,7 +99,7 @@ LinuxGpio::~LinuxGpio()
     }
 }
 
-std::error_code LinuxGpio::get(std::uint32_t& value, std::uint32_t mask)
+Result<std::uint32_t> LinuxGpio::get(std::uint32_t mask)
 {
     std::bitset<m_cPortBits> valueBits(0);
     std::bitset<m_cPortBits> maskBits(mask);
@@ -119,8 +119,7 @@ std::error_code LinuxGpio::get(std::uint32_t& value, std::uint32_t mask)
         }
     }
 
-    value = std::uint32_t(valueBits.to_ulong());
-    return Error::eOk;
+    return std::uint32_t(valueBits.to_ulong());
 }
 
 std::error_code LinuxGpio::set(std::uint32_t value, std::uint32_t mask)

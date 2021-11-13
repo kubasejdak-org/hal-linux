@@ -80,23 +80,16 @@ std::error_code LinuxSpi::drvSetParams(SpiParams params)
 
 std::error_code LinuxSpi::drvWrite(const std::uint8_t* bytes, std::size_t size, osal::Timeout timeout)
 {
-    std::size_t actualReadSize{};
-    auto error = drvTransfer(bytes, nullptr, size, timeout, actualReadSize);
-    (void) actualReadSize;
-    return error;
+    return drvTransfer(bytes, nullptr, size, timeout);
 }
 
-std::error_code
-LinuxSpi::drvRead(std::uint8_t* bytes, std::size_t size, osal::Timeout timeout, std::size_t& actualReadSize)
+Result<std::size_t> LinuxSpi::drvRead(std::uint8_t* bytes, std::size_t size, osal::Timeout timeout)
 {
-    return drvTransfer(nullptr, bytes, size, timeout, actualReadSize);
+    return drvTransfer(nullptr, bytes, size, timeout);
 }
 
-std::error_code LinuxSpi::drvTransfer(const std::uint8_t* txBytes,
-                                      std::uint8_t* rxBytes,
-                                      std::size_t size,
-                                      osal::Timeout /*unused*/,
-                                      std::size_t& actualReadSize)
+Result<std::size_t>
+LinuxSpi::drvTransfer(const std::uint8_t* txBytes, std::uint8_t* rxBytes, std::size_t size, osal::Timeout /*unused*/)
 {
     std::vector<std::uint8_t> buffer(size);
     if (txBytes != nullptr)
@@ -114,8 +107,7 @@ std::error_code LinuxSpi::drvTransfer(const std::uint8_t* txBytes,
     if (rxBytes != nullptr)
         std::memcpy(rxBytes, buffer.data(), buffer.size());
 
-    actualReadSize = size;
-    return Error::eOk;
+    return size;
 }
 
 std::error_code LinuxSpi::setFrequency(std::uint32_t frequencyHz)

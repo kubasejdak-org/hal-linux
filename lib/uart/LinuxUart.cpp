@@ -174,8 +174,7 @@ std::error_code LinuxUart::drvWrite(const std::uint8_t* bytes, std::size_t size)
     return Error::eOk;
 }
 
-std::error_code
-LinuxUart::drvRead(std::uint8_t* bytes, std::size_t size, osal::Timeout timeout, std::size_t& actualReadSize)
+Result<std::size_t> LinuxUart::drvRead(std::uint8_t* bytes, std::size_t size, osal::Timeout timeout)
 {
     auto toRead = size;
 
@@ -209,13 +208,12 @@ LinuxUart::drvRead(std::uint8_t* bytes, std::size_t size, osal::Timeout timeout,
     }
     while (toRead != 0 && !timeout.isExpired());
 
-    actualReadSize = size - toRead;
     if (timeout.isExpired() && toRead != 0) {
         LinuxUartLogger::error("Failed to read: timeout (timeout={} ms)", osal::durationMs(timeout));
         return Error::eTimeout;
     }
 
-    return Error::eOk;
+    return size - toRead;
 }
 
 } // namespace hal::uart
