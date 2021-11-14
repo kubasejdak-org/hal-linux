@@ -1,7 +1,7 @@
 include(FetchContent)
 FetchContent_Declare(hal-interfaces
     GIT_REPOSITORY  https://gitlab.com/embeddedlinux/libs/hal-interfaces.git
-    GIT_TAG         maintenance/add-support-for-result
+    GIT_TAG         origin/master
 )
 
 FetchContent_GetProperties(hal-interfaces)
