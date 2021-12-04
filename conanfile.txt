@@ -1,6 +1,6 @@
 [requires]
 fmt/8.0.1
-libgpiod/1.4.3@kubasejdak/stable
+libgpiod/1.6.3
 spdlog/1.9.2
 
 [generators]
@@ -8,6 +8,5 @@ cmake
 
 [options]
 fmt:header_only=True
-libgpiod:build_cxx=False
 spdlog:no_exceptions=True
 spdlog:header_only=True
