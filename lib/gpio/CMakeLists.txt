@@ -7,11 +7,8 @@ target_include_directories(hal-gpio
     PUBLIC include
 )
 
-conan_add_remote(NAME kubasejdak URL https://gitlab.com/api/v4/projects/17978160/packages/conan)
-conan_get(REQUIRES libgpiod/1.4.3@kubasejdak/stable fmt/8.0.1 OPTIONS libgpiod:build_cxx=False fmt:header_only=True)
-find_package(libgpiod REQUIRED)
-find_package(fmt REQUIRED)
+find_library(gpiod NAMES gpiod)
 
 target_link_libraries(hal-gpio
-    PUBLIC hal::interfaces utils::types libgpiod::libgpiod fmt::fmt
+    PUBLIC hal::interfaces utils::types gpiod
 )
