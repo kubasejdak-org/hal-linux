@@ -35,5 +35,4 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(lib)
 
-# Generate documentation.
 doxygen_addTarget(${CMAKE_CURRENT_SOURCE_DIR}/lib README.md)
