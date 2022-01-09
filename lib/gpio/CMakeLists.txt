@@ -7,7 +7,7 @@ target_include_directories(hal-gpio
     PUBLIC include
 )
 
-find_library(gpiod REQUIRED NAMES gpiod)
+find_library(gpiod NAMES gpiod)
 
 target_link_libraries(hal-gpio
     PUBLIC hal::interfaces utils::types gpiod
