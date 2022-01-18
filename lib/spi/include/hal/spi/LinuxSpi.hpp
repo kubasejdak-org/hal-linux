@@ -4,7 +4,7 @@
 /// @author Kuba Sejdak
 /// @copyright BSD 2-Clause License
 ///
-/// Copyright (c) 2020-2021, Kuba Sejdak <kuba.sejdak@gmail.com>
+/// Copyright (c) 2020-2022, Kuba Sejdak <kuba.sejdak@gmail.com>
 /// All rights reserved.
 ///
 /// Redistribution and use in source and binary forms, with or without
@@ -42,8 +42,7 @@
 namespace hal::spi {
 
 /// Represents the possible SPI significant bits mode.
-enum class SignificantBits
-{
+enum class SignificantBits {
     eMsb = 0,
     eLsb = 1
 };
