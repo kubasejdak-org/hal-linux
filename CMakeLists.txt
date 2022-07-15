@@ -1,6 +1,5 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.22)
 
-# Define application settings.
 include(settings.cmake)
 
 include(cmake/conan.cmake)
@@ -27,7 +26,7 @@ endif ()
 # Project-wide compilation options.
 add_compile_options(-Wall -Wextra -Wpedantic -Werror $<$<COMPILE_LANGUAGE:CXX>:-std=c++20>)
 
-add_subdirectory(${platform_SOURCE_DIR}/app ${platform_BINARY_DIR})
+add_subdirectory(${platform_SOURCE_DIR}/lib ${platform_BINARY_DIR})
 add_subdirectory(${hal-interfaces_SOURCE_DIR}/lib ${hal-interfaces_BINARY_DIR})
 add_subdirectory(${osal_SOURCE_DIR}/lib ${osal_BINARY_DIR})
 add_subdirectory(${utils_SOURCE_DIR}/lib ${utils_BINARY_DIR})
