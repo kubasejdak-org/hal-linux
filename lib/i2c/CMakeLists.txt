@@ -8,5 +8,5 @@ target_include_directories(hal-i2c
 )
 
 target_link_libraries(hal-i2c
-    PUBLIC hal::interfaces utils::types osal::cpp
+    PUBLIC hal::interfaces osal::cpp utils::types
 )
