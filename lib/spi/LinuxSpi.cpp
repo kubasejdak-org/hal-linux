@@ -40,6 +40,7 @@
 #include <unistd.h>
 
 #include <cstring>
+#include <utility>
 
 namespace hal::spi {
 

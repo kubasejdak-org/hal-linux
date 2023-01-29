@@ -8,5 +8,5 @@ target_include_directories(hal-spi
 )
 
 target_link_libraries(hal-spi
-    PUBLIC hal::interfaces osal::cpp utils::types
+    PUBLIC hal::interfaces
 )

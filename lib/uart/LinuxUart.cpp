@@ -32,7 +32,6 @@
 
 #include "hal/uart/LinuxUart.hpp"
 
-#include "hal/Error.hpp"
 #include "hal/logger/linux.hpp"
 
 #include <fcntl.h>
@@ -56,27 +55,27 @@ std::error_code LinuxUart::drvOpen()
 {
     m_fd = ::open(m_device.c_str(), O_RDWR | O_NOCTTY | O_NONBLOCK); // NOLINT
     if (m_fd < 0) {
-        LinuxUartLogger::error("Failed to open: ::open() error: {}", strerror(errno));
+        LinuxUartLogger::error("Failed to open: ::open() error: {}", std::strerror(errno));
         return Error::eFilesystemError;
     }
 
     if (tcgetattr(m_fd, &m_ttyPrev) != 0) {
-        LinuxUartLogger::error("Failed to open: tcgetattr() error: {}", strerror(errno));
+        LinuxUartLogger::error("Failed to open: tcgetattr() error: {}", std::strerror(errno));
         return Error::eHardwareError;
     }
 
     if (tcflush(m_fd, TCIFLUSH) != 0) {
-        LinuxUartLogger::error("Failed to open: tcflush(TCIFLUSH) error: {}", strerror(errno));
+        LinuxUartLogger::error("Failed to open: tcflush(TCIFLUSH) error: {}", std::strerror(errno));
         return Error::eHardwareError;
     }
 
     if (tcflush(m_fd, TCOFLUSH) != 0) {
-        LinuxUartLogger::error("Failed to open: tcflush(TCOFLUSH) error: {}", strerror(errno));
+        LinuxUartLogger::error("Failed to open: tcflush(TCOFLUSH) error: {}", std::strerror(errno));
         return Error::eHardwareError;
     }
 
     if (tcsetattr(m_fd, TCSANOW, &m_tty) != 0) {
-        LinuxUartLogger::error("Failed to open: tcsetattr(TCSANOW) error: {}", strerror(errno));
+        LinuxUartLogger::error("Failed to open: tcsetattr(TCSANOW) error: {}", std::strerror(errno));
         return Error::eHardwareError;
     }
 
@@ -86,12 +85,12 @@ std::error_code LinuxUart::drvOpen()
 std::error_code LinuxUart::drvClose()
 {
     if (tcsetattr(m_fd, TCSANOW, &m_ttyPrev) != 0) {
-        LinuxUartLogger::error("Failed to close: tcsetattr(TCSANOW) error: {}", strerror(errno));
+        LinuxUartLogger::error("Failed to close: tcsetattr(TCSANOW) error: {}", std::strerror(errno));
         return Error::eHardwareError;
     }
 
     if (::close(m_fd) < 0) {
-        LinuxUartLogger::error("Failed to close: ::close() error: {}", strerror(errno));
+        LinuxUartLogger::error("Failed to close: ::close() error: {}", std::strerror(errno));
         return Error::eFilesystemError;
     }
 
