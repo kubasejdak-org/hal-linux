@@ -34,14 +34,11 @@
 
 #include "hal/gpio/IGpioPort.hpp"
 
-#include <utils/types/Result.hpp>
-
 #include <climits>
+#include <cstddef>
 #include <cstdint>
 #include <map>
-#include <string>
 #include <string_view>
-#include <system_error>
 #include <vector>
 
 struct gpiod_chip;

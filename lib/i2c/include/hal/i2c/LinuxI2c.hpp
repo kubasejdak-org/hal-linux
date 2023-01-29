@@ -32,9 +32,8 @@
 
 #include "hal/i2c/II2c.hpp"
 
-#include <osal/Timeout.hpp>
-#include <utils/types/Result.hpp>
-
+#include <cstddef>
+#include <cstdint>
 #include <string>
 #include <system_error>
 #include <vector>

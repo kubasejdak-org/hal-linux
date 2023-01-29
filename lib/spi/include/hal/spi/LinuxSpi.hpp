@@ -32,9 +32,6 @@
 
 #include "hal/spi/ISpi.hpp"
 
-#include <osal/Timeout.hpp>
-#include <utils/types/Result.hpp>
-
 #include <cstdint>
 #include <string>
 #include <system_error>

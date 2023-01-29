@@ -40,7 +40,7 @@
 
 #include <bitset>
 #include <cassert>
-#include <string>
+#include <limits>
 #include <utility>
 
 namespace hal::gpio {

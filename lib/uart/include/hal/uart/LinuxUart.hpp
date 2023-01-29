@@ -36,7 +36,6 @@
 #include "hal/uart/IUart.hpp"
 
 #include <termios.h>
-#include <utils/types/Result.hpp>
 
 #include <string>
 
