@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.24)
 include(settings.cmake)
 
 include(cmake/conan.cmake)
-include(cmake/doxygen.cmake)
 include(cmake/hal-interfaces.cmake)
 include(cmake/osal.cmake)
 include(cmake/platform.cmake)
@@ -30,5 +29,3 @@ add_subdirectory(${utils_SOURCE_DIR}/lib ${utils_BINARY_DIR})
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(lib)
-
-doxygen_addTarget(${CMAKE_CURRENT_SOURCE_DIR}/lib README.md)
